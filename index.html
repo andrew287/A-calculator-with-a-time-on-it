@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, initial scale=1.0">
+    <title>A CALCULATOR WITH A CLOCK</title>
+    <script>
+        function c(val)
+        {
+           document.getElementById("d").value=val;
+        }
+        function v(val)
+        {
+           document.getElementById("d").value+=val;
+        }
+        function e()
+        {
+          try
+          {
+            c(eval(document.getElementById("d").value))
+          }
+          catch(e)
+          {
+            c('Error')
+          }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="digital_clock()">
+    <h2>Calculator Created By Ehizokhale Andrew</h2>
+    <div class="box">
+        <div class="display"><input type="text" readonly  size="15" id="d"></div>
+        <div class="keys">
+            <p>
+                <script type="text/javascript">
+                    function digital_clock()
+                    {
+                      var date=new Date();
+                      var hours=date.getHours();
+                      var minutes=date.getMinutes();
+                      var seconds=date.getSeconds();
+                      hours=addZero(hours);
+                      minutes=addZero(minutes);
+                      seconds=addZero(seconds);
+                      document.getElementById('hours').innerHTML = hours;
+                      document.getElementById('minutes').innerHTML = minutes;
+                      document.getElementById('seconds').innerHTML = seconds;
+                      setTimeout('digital_clock()',500);
+                    }
+                    function addZero(date_part)
+                    {
+                       if(date_part < 10)
+                         {
+                           date_part="0" + date_part;
+                         }
+                         return date_part;
+                    }
+                    </script>
+               <center>
+                <div style="border:lightblack 2px solid; width:100; background-color: #bccd95;">
+                    <b id=hours> </b> &nbsp;:&nbsp;
+                    <b id=minutes> </b> &nbsp;:&nbsp;
+                    <b id=seconds> </b>
+               </center> 
+
+               <p>
+                <input type="button" class="button gray" value="mrc" onclick='c("Calculator Created")'>
+                <input type="button" class="button gray" value="m-" onclick='c("By")'>
+                <input type="button" class="button gray" value="m+" onclick='c("0")'>
+                <input type="button" class="button pink" value="/" onclick='v("/")'>
+               </p>
+               <p>
+                <input type="button" class="button black" value="7" onclick='v("7")'>
+                <input type="button" class="button black" value="8" onclick='v("8")'>
+                <input type="button" class="button black" value="9" onclick='v("9")'>
+                <input type="button" class="button pink" value="*" onclick='v("*")'>   
+               </p>
+               <p>
+                <input type="button" class="button black" value="4" onclick='v("4")'>
+                <input type="button" class="button black" value="5" onclick='v("5")'>
+                <input type="button" class="button black" value="6" onclick='v("6")'>
+                <input type="button" class="button pink" value="-" onclick='v("-")'>
+               </p>
+               <p>
+                <input type="button" class="button black" value="1" onclick='v("1")'>
+                <input type="button" class="button black" value="2" onclick='v("2")'>
+                <input type="button" class="button black" value="3" onclick='v("3")'>
+                <input type="button" class="button pink" value="+" onclick='v("+")'>
+               </p>
+               <p>
+                <input type="button" class="button black" value="0" onclick='v("0")'>
+                <input type="button" class="button black" value="." onclick='v(".")'>
+                <input type="button" class="button black" value="C" onclick='c("")'>
+                <input type="button" class="button orange" value="=" onclick='e()'>
+               </p>
+            </p>
+</body>
+</html>
